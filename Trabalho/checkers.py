@@ -150,8 +150,6 @@ class Game:
 				if self.selected_token:
 					if self.selected_token[0] == r and self.selected_token[1] == c:
 						color = RED
-
-
 						
 				if mark != '-':
 					mark_text = font.render(self.game_board[r][c], True, color)
@@ -164,7 +162,6 @@ class Game:
                              	y-87/2,
                              87,
                               87])
-
 
 
 					screen.blit(mark_text, [x - mark_text.get_width()/ 2, y - mark_text.get_height() / 2])
@@ -203,15 +200,13 @@ game = Game()
 done = False
  
 
-
+#loading the piece e table images and rezing to fit the window
 table = pygame.image.load('tabuleiro.png')
 table = pygame.transform.scale(table,[705,705])
 piece_player1 = pygame.image.load('red.png')
 piece_player1 = pygame.transform.scale(piece_player1,[80,80])
 piece_player2 = pygame.image.load('black.png')
 piece_player2 = pygame.transform.scale(piece_player2,[100,100])
-
-
 
 piece_player1_crown = pygame.image.load('red_crown.png')
 piece_player1_crown = pygame.transform.scale(piece_player1_crown,[80,80])
