@@ -1,10 +1,12 @@
 import socket
 import select
 import errno
+import signal
 
 HEADER_LENGTH = 10
 
 IP = "127.0.0.1"
+#IP = "192.168.0.12"
 PORT = 1234
 my_username = input("Username: ")
 
@@ -27,8 +29,17 @@ client_socket.send(username_header + username)
 
 while True:
 
+    signal.alarm(3)
+
+    try:
+        signal.alarm(3)
+        message = input('{} > '.format(my_username))
+        signal.alarm(0)
+        #print('Seja bem-vindo,', name)
+    except Exception as e:
+        message = ''
     # Wait for user to input a message
-    message = input(f'{my_username} > ')
+    #message = input('{} > '.format(my_username))
 
     # If message is not empty - send it
     if message:
@@ -80,3 +91,7 @@ while True:
         # Any other exception - something happened, exit
         print('Reading error: '.format(str(e)))
         sys.exit()
+
+def timeout():
+    raise Exception('Seu tempo acabou!')
+
