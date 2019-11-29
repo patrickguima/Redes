@@ -5,7 +5,7 @@ import time
 from checkers import *
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-server = "192.168.11.19"
+server = "192.168.0.107"
 port = 5005
 server_ip = socket.gethostbyname(server)
 
@@ -64,12 +64,12 @@ def threaded_client(conn, game):
 			else:
 				if data.count("select") > 0:
 					all = data.split(" ")
-					col = int(all[1])
-					row = int(all[2])
-					color = all[3]
-					print("id",currentId)
-					bo.evaluate_click(col, row, color)
-					print(col,row)
+					row = int(all[1])
+					col = int(all[2])
+					#color = all[3]
+					#print("id",currentId)
+					bo.evaluate_click(row, col)
+					#print(col,row)
 
 				if data == "winner x":
 					bo.winner = "x"

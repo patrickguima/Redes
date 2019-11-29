@@ -32,11 +32,9 @@ piece_player2_crown = pygame.transform.scale(piece_player2_crown,[100,100])
 
 
 class Checker:
-	"""class to keep track of the status of the game."""
+	
 	def __init__(self):
-		"""
-		Start a new game with an empty board
-		"""
+	
 		self.ready = False
 
 		self.last = None
@@ -80,7 +78,7 @@ class Checker:
 		#					['o','-','o','-','o','-','o','-'],
 		#				['-','o','-','o','-','o','-','o']]
 
-	def evaluate_click(self, row,column,color):
+	def evaluate_click(self, row,column):
 		"""
 		Select a token if none is selected.
 		Move token to a square if it is a valid move.
@@ -121,8 +119,8 @@ class Checker:
 			 (player == 'o' and from_row - to_row == 2)) and abs(from_col - to_col) == 2):
 			jump_row = int((to_row - from_row) / 2 + from_row)
 			jump_col = int((to_col - from_col) / 2 + from_col)
-			print("comeu")
-			print("row col",jump_row,jump_col)
+			#print("comeu")
+			#print("row col",jump_row,jump_col)
 			if self.user =="x":
 				self.scoreP1 +=1
 			else:

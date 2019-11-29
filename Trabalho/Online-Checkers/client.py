@@ -5,7 +5,7 @@ import time
 class Network:
 	def __init__(self):
 		self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-		self.host = "192.168.11.19"
+		self.host = "192.168.0.107"
 		self.port = 5005
 		self.addr = (self.host, self.port)
 		self.board = self.connect()

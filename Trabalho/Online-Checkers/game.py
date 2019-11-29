@@ -1,8 +1,3 @@
-'''
-the main game
-author:@techwithtim
-requirements:see requirements.txt
-'''
 
 import subprocess
 import sys
@@ -16,8 +11,7 @@ from client import Network
 import pickle
 pygame.font.init()
 
-#board = pygame.transform.scale(pygame.image.load(os.path.join("img","board_alt.png")), (750, 750))
-#chessbg = pygame.image.load(os.path.join("img", "chessbg.png"))
+
 rect = (113,113,525,525)
 
 turn = "x"
@@ -30,7 +24,7 @@ def menu_screen(win, name):
 	offline = False
 
 	while run:
-		#win.blit(chessbg, (0,0))
+	
 		win.fill([0,0,0])
 		small_font = pygame.font.SysFont("comicsans", 50)
 		click = small_font.render("Click To Play", 1, (255, 0, 0))
@@ -62,7 +56,6 @@ def menu_screen(win, name):
 
 	
 def redraw_gameWindow(win, bo, p1, p2, color, ready):
-	#win.blit(board, (0, 0))
 	#bo.draw(win, color)
 	#bo.draw(win)
 	win.fill([0,0,0])
@@ -90,8 +83,6 @@ def redraw_gameWindow(win, bo, p1, p2, color, ready):
 	
 	if not bo.ready:
 		show = "Waiting for Player"
-		if color == "s":
-			show = "Waiting for Players"
 		font = pygame.font.SysFont("comicsans", 80)
 		txt = font.render(show, 1, (255, 0, 0))
 		win.blit(txt, (width/2 - txt.get_width()/2, 300))
@@ -226,14 +217,14 @@ def main():
 
 
 
-		for event in pygame.event.get(): # User did something
-			if event.type == pygame.QUIT: # If user clicked closer
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT: 
 				reconnect = False
 				if color == "x":
 					bo = n.send("winner o")
 				else:
 					bo = n.send("winner x")
-				run = False # Flag that we are done so we exit this loop
+				run = False 
 				quit()
 				pygame.quit()
 			if event.type == pygame.KEYDOWN:
@@ -250,7 +241,7 @@ def main():
 			
 					row, column = get_clicked_row(pygame.mouse.get_pos()), get_clicked_column(pygame.mouse.get_pos())
 
-					bo = n.send("select " + str(row) + " " + str(column) + " " + color)	
+					bo = n.send("select " + str(row) + " " + str(column))	
 
 	
 		if p1Time <= 0:
