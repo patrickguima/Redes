@@ -66,6 +66,7 @@ def redraw_gameWindow(win, bo, p1, p2, color, ready):
 	#bo.draw(win, color)
 	#bo.draw(win)
 	win.fill([0,0,0])
+
 	formatTime1 = str(int(p1//60)) + ":" + str(int(p1%60))
 	formatTime2 = str(int(p2 // 60)) + ":" + str(int(p2 % 60))
 	if int(p1%60) < 10:
@@ -74,14 +75,14 @@ def redraw_gameWindow(win, bo, p1, p2, color, ready):
 		formatTime2 = formatTime2[:-1] + "0" + formatTime2[-1]
 
 	font = pygame.font.SysFont("comicsans", 25)
-
-	try:
-		txt = font.render(bo.p1Name + "\'s Time: " + str(formatTime2), 1, (255, 255, 255))
-		txt2 = font.render(bo.p2Name + "\'s Time: " + str(formatTime1), 1, (255,255,255))
-	except Exception as e:
-		print(e)
-	win.blit(txt, (720,70))
-	win.blit(txt2, (720, 100))
+	if bo.ready:
+		try:
+			txt = font.render(bo.p1Name + "\'s Time: " + str(formatTime2), 1, (255, 255, 255))
+			txt2 = font.render(bo.p2Name + "\'s Time: " + str(formatTime1), 1, (255,255,255))
+		except Exception as e:
+			print(e)
+		win.blit(txt, (720,70))
+		win.blit(txt2, (720, 100))
 
 	txt = font.render("Press q to Quit", 1, (255, 255, 255))
 	win.blit(txt, (720, 10))
@@ -253,9 +254,9 @@ def main():
 
 	
 		if p1Time <= 0:
-			bo = n.send("winner o")
+			bo = n.send("winner x")
 		elif p2Time <= 0:
-				bo = n.send("winner x")
+				bo = n.send("winner o")
 
 
 		if bo.winner == "x":
@@ -283,5 +284,5 @@ name = input("Please type your name: ")
 width = 900
 height = 700
 win = pygame.display.set_mode((width, height))
-pygame.display.set_caption("Chess Game")
+pygame.display.set_caption("Checkers Game")
 menu_screen(win, name)

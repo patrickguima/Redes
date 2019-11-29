@@ -5,7 +5,7 @@ import time
 from checkers import *
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-server = "192.168.0.107"
+server = "192.168.11.19"
 port = 5005
 server_ip = socket.gethostbyname(server)
 
@@ -89,7 +89,7 @@ def threaded_client(conn, game):
 					#print("Recieved board fros", currentId, "in game", game)
 
 				if bo.ready:
-					if bo.user == "x":
+					if bo.user == bo.start_user:
 						if(time.time()-bo.startTime >=1):
 							bo.time1-=1
 							bo.startTime = time.time()
