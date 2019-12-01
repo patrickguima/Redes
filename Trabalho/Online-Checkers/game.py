@@ -77,8 +77,7 @@ def redraw_gameWindow(win, bo, p1, p2, color, ready):
 		win.blit(txt, (720,70))
 		win.blit(txt2, (720, 100))
 
-	txt = font.render("Press q to Quit", 1, (255, 255, 255))
-	win.blit(txt, (720, 10))
+	
 
 	
 	if not bo.ready:
@@ -87,7 +86,8 @@ def redraw_gameWindow(win, bo, p1, p2, color, ready):
 		txt = font.render(show, 1, (255, 0, 0))
 		win.blit(txt, (width/2 - txt.get_width()/2, 300))
 	else:
-
+		txt = font.render("Press q to Quit", 1, (255, 255, 255))
+		win.blit(txt, (720, 10))
 	
 		font = pygame.font.SysFont("comicsans", 30)
 		if color == "x":
@@ -138,9 +138,7 @@ def end_screen(win, text):
 
 
 def click(pos):
-	"""
-	:return: pos (x, y) in range 0-7 0-7
-	"""
+	
 	x = pos[0]
 	y = pos[1]
 	if rect[0] < x < rect[0] + rect[2]:
@@ -194,15 +192,15 @@ def main():
 	run = True
 
 	while run:
-		if not color == "s":
-			p1Time = bo.time1
-			p2Time = bo.time2
-			if count == 60:
-				bo = n.send("get")
-				count = 0
-			else:
-				count += 1
-			clock.tick(30)
+		
+		p1Time = bo.time1
+		p2Time = bo.time2
+		if count == 60:
+			bo = n.send("get")
+			count = 0
+		else:
+			count += 1
+		clock.tick(30)
 
 		try:
 			

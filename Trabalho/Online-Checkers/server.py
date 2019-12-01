@@ -26,7 +26,7 @@ games = {0: Checker()}
 
 
 def threaded_client(conn, game):
-	global pos, games, currentId, connections, specs
+	global pos, games, currentId, connections
 
 	
 	name = None
